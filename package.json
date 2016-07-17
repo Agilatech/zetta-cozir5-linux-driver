@@ -1,0 +1,26 @@
+{
+  "name": "zetta-cozir5-driver",
+  "version": "0.1.0",
+  "description": "Zetta COZIR 5 driver for Linux",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "zetta-device": "*",
+    "zetta-scout": "*",
+    "@agilatech/cozir5": "*"
+  },
+  "directories": {
+    "example": "example"
+  },
+  "keywords": [
+    "zetta",
+    "COZIR",
+    "carbon dioxide",
+    "CO2",
+    "beaglebone",
+    "raspberry pi"
+  ]
+}
