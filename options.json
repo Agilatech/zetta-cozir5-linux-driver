@@ -1,0 +1,5 @@
+{
+    "file": "/dev/ttyS0",
+    "chronPeriod": 60000,
+    "streamPeriod": 10000
+}

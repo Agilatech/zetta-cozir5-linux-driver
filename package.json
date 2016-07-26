@@ -1,6 +1,6 @@
 {
-  "name": "zetta-cozir5-driver",
-  "version": "0.1.0",
+  "name": "zetta-cozir5-linux-driver",
+  "version": "0.8.0",
   "description": "Zetta COZIR 5 driver for Linux",
   "main": "index.js",
   "scripts": {
