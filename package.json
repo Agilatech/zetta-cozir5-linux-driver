@@ -1,6 +1,6 @@
 {
-  "name": "zetta-cozir5-linux-driver",
-  "version": "0.8.0",
+  "name": "@agilatech/zetta-cozir5-linux-driver",
+  "version": "0.8.2",
   "description": "Zetta COZIR 5 driver for Linux",
   "main": "index.js",
   "scripts": {
@@ -20,6 +20,7 @@
     "COZIR",
     "carbon dioxide",
     "CO2",
+    "sensor",
     "beaglebone",
     "raspberry pi"
   ]

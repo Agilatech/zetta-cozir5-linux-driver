@@ -19,16 +19,18 @@ var Cozir5Scout = module.exports = function(opts) {
     
   // see if any of the options were overridden in the server
 
-  if (typeof opts['file'] !== 'undefined') {
-      options['file'] = opts['file'];
-  }
+  if (typeof opts !== 'undefined') {
+    if (typeof opts['file'] !== 'undefined') {
+        options['file'] = opts['file'];
+    }
 
-  if (typeof opts['chronPeriod'] !== 'undefined') {
-      options['chronPeriod'] = opts['chronPeriod'];
-  }
+    if (typeof opts['chronPeriod'] !== 'undefined') {
+        options['chronPeriod'] = opts['chronPeriod'];
+    }
 
-  if (typeof opts['streamPeriod'] !== 'undefined') {
-      options['streamPeriod'] = opts['streamPeriod'];
+    if (typeof opts['streamPeriod'] !== 'undefined') {
+        options['streamPeriod'] = opts['streamPeriod'];
+    }
   }
 
   Scout.call(this);

@@ -23,8 +23,7 @@ var cozir5 = module.exports = function(options) {
   this.co2       = 0;
   this.co2Stream = 0;
   this._chron       = null;
-  this._streamHum   = null;
-  this._streamTemp  = null;
+  this._streamCo2   = null;
 
   this.cozir5_sensor = new sensor.Cozir5(this.file);
 };
@@ -73,7 +72,7 @@ cozir5.prototype.stopIsochronal = function(callback) {
 
 cozir5.prototype.streamCo2 = function(stream) {
     var self = this;
-    this._streamTemp = setInterval(function() { self.readCo2(); stream.write(this.co2); }, this.streamPeriod);
+    this._streamCo2 = setInterval(function() { self.readCo2(); stream.write(self.co2); }, this.streamPeriod);
 };
 
 cozir5.prototype.logData = function(callback) {

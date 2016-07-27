@@ -21,7 +21,7 @@ zetta()
   .listen(<port number>)   // where <port number> is the port on which the zetta server should listen
 ```
 
-####OPTIONS####
+####OPTIONS
 These options are defined in a file named 'options.json' which may be overridden by program definitions
 ```
 "file":"<serial file device>"
