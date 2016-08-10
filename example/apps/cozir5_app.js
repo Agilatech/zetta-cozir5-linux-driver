@@ -13,9 +13,18 @@ module.exports = function testApp(server) {
   var cozir5DeviceQuery = server.where({type:'COZIR5_Sensor'});
   
   server.observe([cozir5DeviceQuery], function(cozir5Device){
-    setInterval(function(){
-      cozir5Device.call('log-data');
-    }, 10000);
+
+  	// start the periodic data collection
+  	cozir5Device.call('start-isochronal');
+
+  	// Now when the monitored value changes, new data will be present on the stream.
+  	// The incomming message contains three fields: topic, timestamp, and data.
+  	cozir5Device.streams.co2.on('data', function(message) {
+      console.log("data stream " + message.topic + " : " + message.timestamp + " : " + message.data)
+    });
+
+  	// Above, note that we know the monitored data name.  This information is also available in the
+  	// device meta response at http://localhost:1107/servers/testServer/meta/COZIR5_Sensor
   });
   
 }

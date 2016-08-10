@@ -15,23 +15,24 @@ $> git clone https://github.com/Agilatech/zetta-cozir5-linux-driver zetta-cozir5
 ```
 var zetta = require('zetta');
 var cozir5 = require('@agilatech/zetta-cozir5-linux-driver');
- 
+
 zetta()
-  .use(cozir5, [options])  // where [options] define operational paramters -- omit to accept defaults
-  .listen(<port number>)   // where <port number> is the port on which the zetta server should listen
+.use(cozir5, [options])  // where [options] define operational paramters -- omit to accept defaults
+.listen(<port number>)   // where <port number> is the port on which the zetta server should listen
 ```
 
 ####OPTIONS
 These options are defined in a file named 'options.json' which may be overridden by program definitions
+
 ```
 "file":"<serial file device>"
-    /dev/ttyS0, /dev/ttyO2, etc...  Defaults to /dev/ttyS0
+/dev/ttyS0, /dev/ttyO2, etc...  Defaults to /dev/ttyS0
 
 "chronPeriod":<period>
-    period in milliseconds for monitored isochronal data
+Period in milliseconds for monitored isochronal data
 
 "streamPeriod":<period>
-    period in milliseconds for streaming data
+Period in milliseconds for streaming data. A value of 0 disables streaming.
 ```
 
 
@@ -49,6 +50,7 @@ To override the options defined in the options.json file, supply them in an obje
 zetta().use(co2_sensor, { "file":"/dev/ttyS2", "chronPeriod":30000, "streamPeriod":15000 });
 ```
 Overrides the defaults to initialize the serial device on **/dev/ttyS2** with a data monitoring period of **30 seconds** and streaming data every **1.5 seconds**
+
 ### Hardware
 
 * Beaglebone Black
@@ -61,14 +63,20 @@ start-isochronal
 ```
 Begins the periodic collection of carbon dioxide data. Value is monitored as co2,
 and the period is set by the 'chronPeriod' option (defaults to 60 sec).
+
 ```
 stop-isochronal
 ```
 Stops data collection for the monitored values.
 
+###State
+**chron-off** is the beginning state.  The driver enters this state after a transition '*stop-isochronal*' command.  In this state, the monitored data value co2 is set to 0, and no sensor readings are updated.
+
+**chron-on** is the state after a transition '*start-isochronal*' command.  In this state, the monitored data value co2 is updated every time period as specified by '*chronPeriod*'.
+
 ###Design
 
-This device driver is designed for both streaming and discreet data collection from the cozir5 sensor.
+This device driver is designed for both streaming and periodic monitored data collection from the cozir5 sensor.
 
 ###Copyright
 Copyright © 2016 Agilatech. All Rights Reserved.

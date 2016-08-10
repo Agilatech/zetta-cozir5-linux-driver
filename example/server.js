@@ -17,7 +17,7 @@ const serverPort = 1107;
 // NOTE: the options for the co2_sensor are overridden here
 
 zetta()
-    .name('Zetta Server for COZIR5')
+    .name('testServer')
     .use(co2_sensor, { "file":"/dev/ttyS2", "chronPeriod":30000, "streamPeriod":15000 })
     .use(app)
     .listen(serverPort, function() {
