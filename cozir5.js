@@ -51,7 +51,6 @@ cozir5.prototype.init = function(config) {
         .monitor('co2')
         .map('stop-isochronal', this.stopIsochronal)
         .map('start-isochronal', this.startIsochronal)
-        .map('log-data', this.logData)
         .name(this.cozir5_sensor.deviceName())
         .remoteFetch(function() {
             return {
